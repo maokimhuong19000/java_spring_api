@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  springboot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"  # Map the container port to host port
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/dbss5_burger?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      TELEGRAM_TOKEN: "7732397789:AAEvT7sBW3JlCFCwqsafxJ0xzLaQz_xZPJs"
+      CHAT_ID: "1204310951"
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: dbss5_burger
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
