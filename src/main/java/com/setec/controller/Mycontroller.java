@@ -17,7 +17,6 @@ import com.setec.repos.ProductRepo;
 
 import jakarta.servlet.http.HttpServletResponse;
 
-
 @RestController
 @RequestMapping("/api/product")
 public class Mycontroller {
@@ -74,9 +73,9 @@ public class Mycontroller {
 	public Object editProduct(@RequestBody Product product, HttpServletResponse http) {
 		var pro = productRepo.findById(product.getId());
 
-		if(pro.isPresent()) {
+		if (pro.isPresent()) {
 			http.setStatus(HttpServletResponse.SC_OK);
-		}else {
+		} else {
 			http.setStatus(HttpServletResponse.SC_CREATED);
 			product.setId(null);
 		}

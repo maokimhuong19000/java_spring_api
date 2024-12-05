@@ -1,5 +1,3 @@
-com\setec\controller\Mycontroller.class
-com\setec\entities\Product.class
-com\setec\MaokimhuongWebApiApplication.class
-com\setec\repos\ProductRepo.class
-com\setec\ServletInitializer.class
+com/setec/repos/ProductRepo.class
+com/setec/ServletInitializer.class
+com/setec/entities/Product.class

@@ -1,14 +1,14 @@
-# Use a base image with JDK 21
+# Use an official OpenJDK base image
 FROM eclipse-temurin:21-jdk
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the JAR file into the Docker image
-COPY build/libs/coffee-shop.jar app.jar
+# Copy the WAR file into the Docker image
+COPY target/maokimhuong-web-api-0.0.1-SNAPSHOT.war /app/maokimhuong-web-api.war
 
-# Expose the application port
-EXPOSE 8081
+# Expose the port on which the app will run
+EXPOSE 8080
 
-# Command to run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Command to run the Spring Boot WAR file
+ENTRYPOINT ["java", "-jar", "/app/maokimhuong-web-api.war"]
